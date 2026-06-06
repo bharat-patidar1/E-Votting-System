@@ -3,7 +3,7 @@ from flask_session import Session
 from werkzeug.security import generate_password_hash
 from config import Config
 from models import db, Admin
-from utils.excel_loader import load_voters_from_excel
+from utils.seed_data import seed_voters
 
 def create_app():
     app = Flask(__name__)
@@ -33,7 +33,7 @@ def create_app():
             print("Admin account created.")
             
         # Load voters
-        load_voters_from_excel(app)
+        seed_voters(app)
 
     # Register Blueprints
     from routes.auth import auth_bp
