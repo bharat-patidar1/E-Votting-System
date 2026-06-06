@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Campaign - e-Voting System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-bold"><i class="fas fa-edit me-2 text-primary"></i>Edit Campaign</h5>
+                <a href="{{ url_for('admin.dashboard') }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('admin.edit_campaign', campaign_id=campaign.campaign_id) }}">
+                    <div class="mb-3">
+                        <label for="campaign_name" class="form-label fw-semibold">Campaign Name</label>
+                        <input type="text" class="form-control" id="campaign_name" name="campaign_name" required value="{{ campaign.campaign_name }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="constituency" class="form-label fw-semibold">Constituency Name</label>
+                        <input type="text" class="form-control" id="constituency" name="constituency" required value="{{ campaign.constituency }}">
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="start_datetime" class="form-label fw-semibold">Start Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="start_datetime" name="start_datetime" required value="{{ campaign.start_datetime|replace(' ', 'T') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="end_datetime" class="form-label fw-semibold">End Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="end_datetime" name="end_datetime" required value="{{ campaign.end_datetime|replace(' ', 'T') }}">
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Update Campaign</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

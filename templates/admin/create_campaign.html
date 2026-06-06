@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Campaign - e-Voting System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-bold"><i class="fas fa-plus-circle me-2 text-success"></i>Create New Campaign</h5>
+                <a href="{{ url_for('admin.dashboard') }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('admin.create_campaign') }}">
+                    <div class="mb-3">
+                        <label for="campaign_name" class="form-label fw-semibold">Campaign Name</label>
+                        <input type="text" class="form-control" id="campaign_name" name="campaign_name" required placeholder="e.g., State Assembly Election 2026">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="constituency" class="form-label fw-semibold">Constituency Name</label>
+                        <input type="text" class="form-control" id="constituency" name="constituency" required placeholder="e.g., Bhopal Central">
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="start_datetime" class="form-label fw-semibold">Start Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="start_datetime" name="start_datetime" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="end_datetime" class="form-label fw-semibold">End Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="end_datetime" name="end_datetime" required>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg">Create Campaign</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

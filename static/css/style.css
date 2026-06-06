@@ -1,0 +1,37 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.bg-primary {
+    background-color: #0f4c81 !important; /* Classic blue */
+}
+
+.btn-primary {
+    background-color: #0f4c81;
+    border-color: #0f4c81;
+}
+
+.btn-primary:hover {
+    background-color: #0a355c;
+    border-color: #0a355c;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #0f4c81;
+}
+
+.nav-pills .nav-link {
+    color: #495057;
+}
+
+.form-floating > label {
+    padding-left: 1rem;
+}

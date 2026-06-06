@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - e-Voting System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-0 rounded-lg">
+            <div class="card-header bg-primary text-white text-center py-4">
+                <h3 class="mb-0 fw-bold"><i class="fas fa-user-shield me-2"></i>System Login</h3>
+            </div>
+            <div class="card-body p-5">
+                
+                <!-- Login Type Tabs -->
+                <ul class="nav nav-pills nav-justified mb-4" id="loginTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-semibold" id="voter-tab" type="button" onclick="switchTab('voter')">Voter Portal</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-semibold" id="admin-tab" type="button" onclick="switchTab('admin')">Admin Portal</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="loginTabContent">
+                    <!-- Voter Login -->
+                    <div class="tab-pane fade show active" id="voter-login" role="tabpanel">
+                        <form method="POST" action="{{ url_for('auth.login') }}">
+                            <input type="hidden" name="login_type" value="voter">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="voter_id" name="username" placeholder="Voter ID" required>
+                                <label for="voter_id">Voter ID</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="voter_password" name="password" placeholder="Password" required>
+                                <label for="voter_password">Password</label>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Secure Login <i class="fas fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Admin Login -->
+                    <div class="tab-pane fade" id="admin-login" role="tabpanel">
+                        <form method="POST" action="{{ url_for('auth.login') }}">
+                            <input type="hidden" name="login_type" value="admin">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="admin_username" name="username" placeholder="Admin Username" required>
+                                <label for="admin_username">Admin Username</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="admin_password" name="password" placeholder="Password" required>
+                                <label for="admin_password">Password</label>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-dark btn-lg">Admin Login <i class="fas fa-lock ms-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function switchTab(tab) {
+    // Remove active classes
+    document.getElementById('voter-tab').classList.remove('active');
+    document.getElementById('admin-tab').classList.remove('active');
+    document.getElementById('voter-login').classList.remove('show', 'active');
+    document.getElementById('admin-login').classList.remove('show', 'active');
+    
+    // Add active classes
+    if(tab === 'voter') {
+        document.getElementById('voter-tab').classList.add('active');
+        document.getElementById('voter-login').classList.add('show', 'active');
+    } else {
+        document.getElementById('admin-tab').classList.add('active');
+        document.getElementById('admin-login').classList.add('show', 'active');
+    }
+}
+</script>
+{% endblock %}
