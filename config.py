@@ -9,6 +9,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
+    VOTER_DATA_FILE = os.path.join(basedir, 'voter_data.xlsx')
+
     # Default Admin Credentials
     ADMIN_USERNAME = 'admin'
     ADMIN_PASSWORD = 'admin123'
